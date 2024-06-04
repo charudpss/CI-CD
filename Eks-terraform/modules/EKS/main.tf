@@ -34,19 +34,19 @@ data "aws_ami" "amazon_linux_2" {
 }
 
 # Creating kubectl server
-resource "aws_instance" "kubectl-server" {
-  ami                         = data.aws_ami.amazon_linux_2.id
-  instance_type               = var.instance_size
-  associate_public_ip_address = true
-  subnet_id                   = var.public_subnet_az1_id
-  vpc_security_group_ids      = [var.eks_security_group_id]
+#resource "aws_instance" "kubectl-server" {
+#  ami                         = data.aws_ami.amazon_linux_2.id
+#  instance_type               = var.instance_size
+#  associate_public_ip_address = true
+#  subnet_id                   = var.public_subnet_az1_id
+#  vpc_security_group_ids      = [var.eks_security_group_id]
 
-  tags = {
-    Name = "${var.cluster_name}-kubectl"
-    Env  = var.env
-    Type = var.type
-  }
-}
+#  tags = {
+#    Name = "${var.cluster_name}-kubectl"
+#    Env  = var.env
+#    Type = var.type
+#  }
+#}
 
 # Creating Worker Node Group
 resource "aws_eks_node_group" "node-grp" {
